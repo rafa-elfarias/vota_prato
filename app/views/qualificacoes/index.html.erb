@@ -1,0 +1,29 @@
+<h1>Todas as qualificações</h1>
+
+<table>
+  <tr>
+    <th>Cliente</th>
+    <th>Restaurante</th>
+    <th>Nota</th>
+    <th>Valor gasto</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @qualificacoes.each do |qualificacao| %>
+  <tr>
+    <td><%= qualificacao.cliente.nome %></td>
+    <td><%= qualificacao.restaurante.nome %></td>
+    <td><%= qualificacao.nota %></td>
+    <td><%= valor_formatado(qualificacao.valor_gasto) %></td>
+    <td><%= link_to 'Mostrar', qualificacao %></td>
+    <td><%= link_to 'Editar', edit_qualificacao_path(qualificacao) %></td>
+    <!--<td><%= link_to 'Destroy', qualificacao, confirm: 'Are you sure?', method: :delete %></td>-->
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Nova Qualificação', new_qualificacao_path %>

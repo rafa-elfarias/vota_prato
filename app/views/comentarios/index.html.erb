@@ -1,0 +1,26 @@
+<h1>Todos os comentários</h1>
+
+<table>
+  <tr>
+    <th>Conteudo</th>
+    <th>Comentavel</th>
+    <th>Comentavel type</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @comentarios.each do |comentario| %>
+  <tr>
+    <td><%= comentario.conteudo %></td>
+
+    <td><%= link_to 'Mostrar', comentario %></td>
+    <td><%= link_to 'Editar', edit_comentario_path(comentario) %></td>
+    <td><%= link_to 'Deletar', comentario, confirm: 'Você tem certeza?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Novo Comentário', new_comentario_path %>

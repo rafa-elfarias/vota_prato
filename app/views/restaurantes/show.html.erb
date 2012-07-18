@@ -1,0 +1,40 @@
+<h1>Exibindo Restaurante</h1>
+<%= render :partial => "titulo" %>
+<p>
+<b>Foto:</b>
+<%= image_tag @restaurante.foto.url(:thumb) %>
+</p>
+<p>
+	<b>Nome: </b>
+	<%= @restaurante.nome %>
+</p>
+<p>
+	<b>Endereço: </b>
+	<%= @restaurante.endereco %>
+</p>
+<p>
+	<b>Especialidade: </b>
+	<%= @restaurante.especialidade %>
+</p>
+<b>Nota média: </b>
+<%= @restaurante.qualificacoes.average(:nota) %>
+<br/>
+<b>Qualificações: </b>
+<%= @restaurante.qualificacoes.count %>
+<br/>
+<b>Preço médio: </b>
+<%= @restaurante.qualificacoes.average(:valor_gasto) %>
+<br/>
+<br/>
+<%= link_to "Qualificar este restaurante",
+:controller => "qualificacoes",
+:action => "new",
+:restaurante => @restaurante %><br/><br/>
+<% unless @restaurante.comentarios.empty?%>
+<%= comentarios @restaurante %>
+<% end %>
+<%= novo_comentario(@restaurante) %>
+<br/>
+<%= link_to 'Editar', { :action => 'edit', :id => @restaurante } %>
+<br/><br/>
+<%= link_to 'Voltar', { :action => 'index' } %>

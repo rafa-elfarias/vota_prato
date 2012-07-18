@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  conteudo: MyText
+  comentavel_id: 1
+  comentavel_type: MyString
+
+two:
+  conteudo: MyText
+  comentavel_id: 1
+  comentavel_type: MyString

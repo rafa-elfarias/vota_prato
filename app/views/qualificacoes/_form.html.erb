@@ -1,0 +1,44 @@
+<%= form_for(@qualificacao) do |f| %>
+  <% if @qualificacao.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@qualificacao.errors.count, "error") %> prohibited this qualificacao from being saved:</h2>
+
+      <ul>
+      <% @qualificacao.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :cliente_id %><br />
+    <% if @qualificacao.cliente %>
+    	<%=f.hidden_field 'cliente_id'%>
+    <% else %>
+	<%= f.collection_select(:cliente_id, Cliente.order('nome'), :id, :nome, {:include_blank => 'Selecione o Cliente'})%>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.label :restaurante_id %><br />
+    <% if @qualificacao.restaurante %>
+    	<%=f.hidden_field 'restaurante_id'%>
+    <% else %>
+	<%= f.collection_select(:restaurante_id, Restaurante.order('nome'), :id, :nome, {:include_blank => 'Selecione o Restaurante'}) %>
+    <% end %>
+    
+  </div>
+
+  <div class="field">
+    <%= f.label :nota %><br />
+    <%= f.text_field :nota %>
+  </div>
+  <div class="field">
+    <%= f.label :valor_gasto %><br />
+    <%= f.text_field :valor_gasto %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Salvar "%>
+  </div>
+<% end %>

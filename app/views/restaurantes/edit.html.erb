@@ -1,0 +1,25 @@
+<%= render :partial => "titulo" %><br />
+<h1>Editando Restaurante</h1>
+
+
+<% if @restaurante.errors.any? %>
+<ul>
+	<% @restaurante.errors.full_messages.each do |msg| %>
+	<li>
+		<%= msg %>
+	</li>
+	<% end %>
+</ul>
+<% end %>
+
+<%= form_for :restaurantes, :url => {:action=>'create'}, :html => {:multipart=>true} do |f| %>
+<%= f.file_field :foto %>
+Nome: <%= f.text_field :nome %>
+<br/>
+Endereço: <%= f.text_field :endereco %>
+<br/>
+Especialidade: <%= f.text_field :especialidade %>
+<br/>
+<%= submit_tag 'Atualizar' %>
+<% end %>
+<%= link_to 'Voltar', { :action => 'index' } %>
